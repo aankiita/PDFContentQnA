@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 os.environ['HF_TOKEN']=os.getenv("HF_TOKEN")
-embeddings=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+embeddings=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2",model_kwargs={"device": "cpu"})
 
 
 ## set up Streamlit 
@@ -125,6 +125,7 @@ if api_key:
             st.write("Chat History:", session_history.messages)
 else:
     st.warning("Please enter the GRoq API Key")
+
 
 
 
